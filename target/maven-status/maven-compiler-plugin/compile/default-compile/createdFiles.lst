@@ -1,0 +1,12 @@
+pl\polsl\lab\stanislaw\czembor\controller\MainViewController$1.class
+pl\polsl\lab\stanislaw\czembor\controller\App.class
+pl\polsl\lab\stanislaw\czembor\exceptions\RatingException.class
+pl\polsl\lab\stanislaw\czembor\controller\MainViewController$Option.class
+pl\polsl\lab\stanislaw\czembor\model\AuthorBuilder.class
+pl\polsl\lab\stanislaw\czembor\model\Author.class
+pl\polsl\lab\stanislaw\czembor\model\Book.class
+pl\polsl\lab\stanislaw\czembor\controller\MainViewController.class
+pl\polsl\lab\stanislaw\czembor\model\Rating.class
+pl\polsl\lab\stanislaw\czembor\model\BookBuilder.class
+pl\polsl\lab\stanislaw\czembor\model\RatingBuilder.class
+pl\polsl\lab\stanislaw\czembor\view\MainView.class
