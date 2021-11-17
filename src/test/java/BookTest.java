@@ -11,7 +11,6 @@ import pl.polsl.lab.stanislaw.czembor.model.Rating;
 import pl.polsl.lab.stanislaw.czembor.model.RatingBuilder;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.provider.ValueSource;
 import pl.polsl.lab.stanislaw.czembor.model.BookBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -53,15 +52,15 @@ public class BookTest {
     @ParameterizedTest
 //      given
     @CsvSource({"3, 4, 5 ,4.0", "1, 2, 3, 2.0", "5, 3, 10, 6.0"})
-    void shouldGenerateTheExpectedUppercaseValue(int rating1,int rating2, int rating3 , double expectedAverage) throws RatingException {
+    void shouldCalculateAverageRating(int rating1,int rating2, int rating3 , double expectedAverage) throws RatingException {
 //      when
         List<Rating> testRatings = new ArrayList<>();
         testRatings.add( new RatingBuilder().setValue(rating1).setDescription("test").createRating());
         testRatings.add( new RatingBuilder().setValue(rating2).setDescription("test").createRating());
         testRatings.add( new RatingBuilder().setValue(rating3).setDescription("test").createRating());
-        Book book = new BookBuilder().setTitle("testTitle").setReleaseDate(LocalDate.of(2000, 01, 01)).setGenre("testGenre").setRatings(testRatings).createBook();
+        book = new BookBuilder().setTitle("testTitle").setReleaseDate(LocalDate.of(2000, 01, 01)).setGenre("testGenre").setRatings(testRatings).createBook();
 //      then
-        assertEquals(expectedAverage, book.getAverageRating(), "Succesfull average rating calculation");
+        assertEquals(expectedAverage, book.getAverageRating(), "Succesfull average rating calculation ");
     }
     
     
