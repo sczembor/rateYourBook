@@ -1,6 +1,8 @@
 package pl.polsl.lab.stanislaw.czembor.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -35,6 +37,11 @@ public class Author {
     public String getName() {
         return name;
     }
+    
+    public void deleteBook(String title){
+        bibliography.removeIf(book -> book.getTitle().equals(title));
+    }
+    
 
     /**
      * Name of Author setter
@@ -57,7 +64,7 @@ public class Author {
     /**
      * LastName of Author setter
      *
-     * @param lastnName last name of the Author
+     * @param lastName last name of the Author
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -72,8 +79,29 @@ public class Author {
         if (bibliography.isEmpty()) {
             return null;
         } else {
-            return bibliography;
+            return bibliography;    
         }
+    }
+
+    /**
+     * Returns sorted bibliography
+     *
+     * @return A sorted list of objects of a Book class in descending order
+     * based on average rating
+     */
+    public List<Book> getBibliographySortedByRatingDescending() {
+        return bibliography.stream()
+                .sorted((o1, o2) -> {
+                    if (o1.getAverageRating() == o2.getAverageRating()) {
+                        return o1.getTitle().compareTo(o2.getTitle());
+                    } else if (o1.getAverageRating() > o2.getAverageRating()) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                })
+                .collect(Collectors.toList());
+
     }
 
     /**
@@ -84,14 +112,13 @@ public class Author {
     public void setBibliography(List<Book> bibliography) {
         this.bibliography = bibliography;
     }
-    
-    
-        /**
+
+    /**
      * Add book to author's bibliography
      *
      * @param book An object of a Book class
      */
-    public void addBook(Book book){
+    public void addBook(Book book) {
         this.bibliography.add(book);
     }
 

@@ -12,49 +12,50 @@ import pl.polsl.lab.stanislaw.czembor.model.Rating;
 import pl.polsl.lab.stanislaw.czembor.model.RatingBuilder;
 
 /**
- *
+ * 
  * @author stani
+ * 
  */
 public class RatingTest {
 
     private Rating rating;
 
     @Test
-    public void testUpperBoundryException() {
-        try {
+    public void testUpperBoundryException() throws RatingException {
 //      given
 //      when
-            rating = new RatingBuilder().setValue(11).setDescription("test").createRating();
+        rating = new RatingBuilder().setValue(11).setDescription("test").createRating();
 //      then
-            fail("An exception should be thron when value > 10");
-        } catch (RatingException e) {
-        }
+        fail("An exception should be thron when value > 10");
+
     }
-        @Test
+
+    @Test
     public void testLowerBoundryException() {
         try {
 //      given
 //      when
-           rating = new RatingBuilder().setValue(-1).setDescription("test").createRating();
+            rating = new RatingBuilder().setValue(-1).setDescription("test").createRating();
 //       then
             fail("An exception should be thron when value < 0");
         } catch (RatingException e) {
         }
     }
+
     @Test
     public void testOfException() throws RatingException {
 //      given
         rating = new RatingBuilder().setValue(5).setDescription("test").createRating();
         RatingException exception = assertThrows(
                 RatingException.class,
-//      when
+                //      when
                 () -> rating.setValue(-1));
 //      then
         assertEquals("Rating value must be between 1 and 10", exception.getMessage());
     }
-    
+
     @ParameterizedTest
-//    given
+//      given
     @CsvSource({"3,3.0", "1,1.0", "5,5.0"})
     void shouldReturnIntegerConvertedToDouble(int input, double expected) throws RatingException {
 //      when

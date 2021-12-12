@@ -8,13 +8,8 @@ import pl.polsl.lab.stanislaw.czembor.model.Author;
 import pl.polsl.lab.stanislaw.czembor.model.Book;
 import pl.polsl.lab.stanislaw.czembor.model.BookBuilder;
 import pl.polsl.lab.stanislaw.czembor.model.Rating;
-import pl.polsl.lab.stanislaw.czembor.model.RatingBuilder;
 import pl.polsl.lab.stanislaw.czembor.view.MainView;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 /**
  *
  * @author stani
@@ -179,7 +174,7 @@ public class MainViewController {
             rateDescription = in.nextLine();
         }
         try {
-            Rating newRating = new Rating(Integer.parseInt(rateValue), rateDescription);
+            var newRating = new Rating(Integer.parseInt(rateValue), rateDescription);
         } catch (RatingException e) {
             System.out.println(e);
         }

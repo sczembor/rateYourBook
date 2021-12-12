@@ -2,6 +2,7 @@ package pl.polsl.lab.stanislaw.czembor.model;
 
 import java.util.List;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Model class to represent books
@@ -27,7 +28,11 @@ public class Book {
         this.title = title;
         this.releaseDate = releaseDate;
         this.genre = genre;
-        this.ratings = ratings;
+        if (ratings == null) {
+            this.ratings = new ArrayList<Rating>();
+        } else {
+            this.ratings = ratings;
+        }
     }
 
     /**
@@ -126,13 +131,13 @@ public class Book {
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
     }
-    
+
     /**
      * Method to add a rating to the ratings list
-     * 
+     *
      * @param rating Rating object
      */
-    public void addRating(Rating rating){
+    public void addRating(Rating rating) {
         this.ratings.add(rating);
     }
 
